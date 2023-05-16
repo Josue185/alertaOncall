@@ -16,8 +16,10 @@ function notify(message) {
 
 // Função para reproduzir o som
 function playSound() {
-  const audio = document.getElementById('audio');
-  audio.play();
+  const audio = new Audio("https://github.com/Josue185/alertaOncall/blob/17385150a9fcb2b95cd56ee44ee8811d24918ffc/IPHONE%20NOTIFICATION%20SOUND%20EFFECT%20(PINGDING).mp3");
+  audio.play().catch((error) => {
+    console.log("O som não pôde ser reproduzido:", error);
+  });
 }
 
 
