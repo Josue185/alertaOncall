@@ -8,6 +8,7 @@ function notify(message) {
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         new Notification(message);
+        playSound();
       }
     });
   }
@@ -85,3 +86,8 @@ horarios.forEach((hora) => {
 
   lista.appendChild(item);
 });
+
+//função que chama o som de notificação
+function playSound(){
+  const audio = new Audio("/Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3")
+}
