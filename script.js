@@ -89,5 +89,5 @@ horarios.forEach((hora) => {
 
 //função que chama o som de notificação
 function playSound(){
-  const audio = new Audio("/Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3")
+  const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3")
 }
