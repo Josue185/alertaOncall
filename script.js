@@ -14,6 +14,13 @@ function notify(message) {
   }
 }
 
+// Função para reproduzir o som
+function playSound() {
+  const audio = document.getElementById('audio');
+  audio.play();
+}
+
+
 const lista = document.getElementById("lista");
 const adicionar = document.getElementById("adicionar");
 
