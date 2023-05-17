@@ -18,7 +18,7 @@ function notify(message) {
 // Função assíncrona para reproduzir o som
 async function playSound() {
   return new Promise((resolve, reject) => {
-    const audio = new Audio("/Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+    const audio = new Audio("IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
     audio.onended = resolve;
     audio.onerror = reject;
     audio.play();
