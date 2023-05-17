@@ -1,25 +1,27 @@
 // Função para exibir uma notificação na área de trabalho
 function notify(message) {
-  playSound();
-
-  if (!("Notification" in window)) {
-    console.log("Este navegador não suporta notificações de desktop");
-  } else if (Notification.permission === "granted") {
-    new Notification(message);
-  } else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted") {
-        new Notification(message);
-      }
-    });
-  }
+  playSound().then(() => {
+    if (!("Notification" in window)) {
+      console.log("Este navegador não suporta notificações de desktop");
+    } else if (Notification.permission === "granted") {
+      new Notification(message);
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          new Notification(message);
+        }
+      });
+    }
+  });
 }
 
-// Função para reproduzir o som
-function playSound() {
-  const audio = new Audio("IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
-  audio.play().catch((error) => {
-    console.log("O som não pôde ser reproduzido:", error);
+// Função assíncrona para reproduzir o som
+async function playSound() {
+  return new Promise((resolve, reject) => {
+    const audio = new Audio("/Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+    audio.onended = resolve;
+    audio.onerror = reject;
+    audio.play();
   });
 }
 
