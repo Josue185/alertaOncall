@@ -15,6 +15,25 @@ function notify(message) {
     }
   }
   
+// Função para exibir uma notificação na área de trabalho
+function notify(message) {
+    const agora = new Date();
+    const [horaAtual, minutoAtual] = agora.toLocaleTimeString("pt-BR", { hour12: false }).split(":");
+    const [horaProgramada, minutoProgramado] = message.split(":");
+    
+    if (horaAtual === horaProgramada && minutoAtual === minutoProgramado) {
+      playSound();
+      new Notification(message);
+    }
+  }
+  
+  // Função para reproduzir o som
+  function playSound() {
+    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+    audio.play();
+  }
+  
+  
   // Função para reproduzir o som
   function playSound() {
     const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
