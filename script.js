@@ -1,26 +1,24 @@
 function notify(message) {
-    const agora = new Date();
-    const [horaAtual, minutoAtual] = agora.toLocaleTimeString("pt-BR", { hour12: false }).split(":");
-    const [horaProgramada, minutoProgramado] = message.split(":");
-    
-    if (horaAtual === horaProgramada && minutoAtual === minutoProgramado) {
-      playSound();
-      new Notification(message);
-    }
+  playSound();
+  if (!("Notification" in window)) {
+    console.log("Este navegador não suporta notificações de desktop");
+  } else if (Notification.permission === "granted") {
+    new Notification(message);
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        new Notification(message);
+      }
+    });
   }
-  
-  // Função para reproduzir o som
-  function playSound() {
-    const audio = new Audio("keyq.wav");
-    audio.play();
-  }
-  
-  
-  // Função para reproduzir o som
-  function playSound() {
-    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
-    audio.play();
-  }
+}
+
+function playSound() {
+  const audio = new Audio("keyq.wav");
+  audio.play().catch(error => {
+    console.log("Erro ao reproduzir o som:", error);
+  });
+}
   
   const lista = document.getElementById("lista");
   const adicionar = document.getElementById("adicionar");
