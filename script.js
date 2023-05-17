@@ -16,7 +16,7 @@ function notify(message) {
 
 // Função para reproduzir o som
 function playSound() {
-  const audio = new Audio("keyq.wav");
+  const audio = new Audio("caminho/do/arquivo-de-audio.mp3").play();
   audio.play().catch((error) => {
     console.log("O som não pôde ser reproduzido:", error);
   });
