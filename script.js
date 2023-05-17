@@ -1,21 +1,3 @@
-// Função para exibir uma notificação na área de trabalho
-function notify(message) {
-    if (!("Notification" in window)) {
-      console.log("Este navegador não suporta notificações de desktop");
-    } else if (Notification.permission === "granted") {
-      new Notification(message);
-      playSound();
-    } else if (Notification.permission !== "denied") {
-      Notification.requestPermission().then((permission) => {
-        if (permission === "granted") {
-          new Notification(message);
-          playSound();
-        }
-      });
-    }
-  }
-  
-// Função para exibir uma notificação na área de trabalho
 function notify(message) {
     const agora = new Date();
     const [horaAtual, minutoAtual] = agora.toLocaleTimeString("pt-BR", { hour12: false }).split(":");
@@ -29,7 +11,7 @@ function notify(message) {
   
   // Função para reproduzir o som
   function playSound() {
-    const audio = new Audio("keyq.wav");
+    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
     audio.play();
   }
   
