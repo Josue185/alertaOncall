@@ -4,27 +4,22 @@ function notify(message) {
       console.log("Este navegador não suporta notificações de desktop");
     } else if (Notification.permission === "granted") {
       new Notification(message);
+      playSound();
     } else if (Notification.permission !== "denied") {
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           new Notification(message);
-          showNotification();
+          playSound();
         }
       });
     }
   }
   
   // Função para reproduzir o som
-  function showNotification(message) {
-    const notification = new Notification("Alerta de Oncall", {
-        body: message,
-      });
-    
-      // Reproduzir o áudio
-      const audio = new Audio("keyq.wav");
-      audio.play();
-    }
-  
+  function playSound() {
+    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+    audio.play();
+  }
   
   const lista = document.getElementById("lista");
   const adicionar = document.getElementById("adicionar");
@@ -53,6 +48,10 @@ function notify(message) {
       const fechar = item.querySelector("button");
       fechar.addEventListener("click", () => {
         item.remove();
+  
+        // Armazena a lista de horários no localStorage
+        const horarios = Array.from(lista.children).map((item) => item.textContent.trim().replace("Fechar", ""));
+        localStorage.setItem("horarios", JSON.stringify(horarios));
       });
   
       lista.appendChild(item);
@@ -98,9 +97,4 @@ function notify(message) {
   
     lista.appendChild(item);
   });
-  
-  //função que chama o som de notificação
-  function playSound(){
-    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3")
-  }
   
