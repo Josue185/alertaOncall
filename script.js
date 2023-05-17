@@ -11,7 +11,7 @@ function notify(message) {
   
   // Função para reproduzir o som
   function playSound() {
-    const audio = new Audio("Alerta Oncall/IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+    const audio = new Audio("keyq.wav");
     audio.play();
   }
   
