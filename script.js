@@ -13,6 +13,7 @@ function playSound() {
     } else if (Notification.permission === "granted") {
       new Notification(message);
       playSound();
+        
     } else if (Notification.permission !== "denied") {
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
