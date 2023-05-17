@@ -21,7 +21,7 @@ function notify(message) {
       });
     
       // Reproduzir o áudio
-      const audio = new Audio("IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
+      const audio = new Audio("keyq.wav");
       audio.play();
     }
   
