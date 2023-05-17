@@ -8,7 +8,6 @@ function notify(message) {
     Notification.requestPermission().then((permission) => {
       if (permission === "granted") {
         new Notification(message);
-        playSound();
       }
     });
   }
@@ -22,6 +21,7 @@ async function playSound() {
   });
 }
 
+playSound();
 
 const lista = document.getElementById("lista");
 const adicionar = document.getElementById("adicionar");
