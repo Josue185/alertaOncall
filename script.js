@@ -1,7 +1,7 @@
 // Função para exibir uma notificação na área de trabalho
 // Função para reproduzir o som
 function playSound() {
-  const audio = new Audio("https://github.com/Josue185/alertaOncall/blob/c53bdcbb48b183340cc722d60fb2fd8f7dee3809/IPHONE%20NOTIFICATION%20SOUND%20EFFECT%20(PINGDING).mp3");
+  const audio = new Audio("IPHONE NOTIFICATION SOUND EFFECT (PINGDING).mp3");
   try {
     audio.play();
   } catch (error) {
